@@ -1,0 +1,210 @@
+:root {
+  /* Color palettes for light and dark themes */
+  --primary: #EAE4D5;
+  --primary-light: #DDF6D2;
+  --secondary: #C68EFD;
+  --bg-light: #f9fafb;
+  --bg-dark: #1f1f1f;
+  --surface-light: #ffffff;
+  --surface-dark: #2a2a2a;
+  --text-light: #1f2937;
+  --text-dark: #e5e5e5;
+  --muted-light: #547792;
+  --muted-dark: #9e9e9e;
+  --radius: 16px;
+  --shadow-light: 0 12px 40px rgba(0, 0, 0, 0.05);
+  --shadow-dark: 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+.container {
+  background: var(--surface-light);
+  padding: 3rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+  width: 100%;
+  max-width: 780px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: var(--surface-dark);
+    box-shadow: var(--shadow-dark);
+  }
+}
+
+.container:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  animation: fadeInDown 0.8s ease;
+}
+
+.head-two{
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #A8F1FF;
+  animation: fadeInDown 0.8s ease;
+}
+
+p {
+  margin-bottom: 1.75rem;
+  color: var(--muted-light);
+  animation: fadeIn 0.8s ease 0.3s both;
+}
+
+/* Input & Button */
+input, button {
+  font-family: inherit;
+}
+
+input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: #393E46;
+  background: var(--primary-light);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  background: #ECFAE5;
+  transform: scale(1.02);
+}
+
+button {
+  background: var(--secondary);
+    color: #393E46;
+  border: none;
+  padding: 0.85rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #B0DB9C;
+  transform: translateY(-3px) scale(1.01);
+}
+
+button:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Status & Spinner */
+
+.status {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  height: 32px;
+  font-size: 1.05rem;
+  color: #03A791;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+
+}
+
+.status.error {
+  color: #C5172E;
+  font-weight: bold;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.status::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 6px;
+  border-radius: 50%;
+  border: 4px solid var(--primary);
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.status.downloading::before {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Layouts */
+@media (max-width: 768px) {
+  .container {
+    max-width: 560px;
+    padding: 2rem 1.5rem;
+  }
+  h1 { font-size: 2rem; }
+  p { margin-bottom: 1.25rem; }
+  input { padding: 0.75rem; }
+  button { padding: 0.75rem 1.5rem; font-size: 1rem;}
+  .status {margin-top: 1rem; margin-bottom: 1rem;}
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+  .status {margin-top: 1rem; margin-bottom: 1.5rem;}
+  h1 { font-size: 1.75rem; }
+  p { margin: 1.5rem 0;  }
+  input { padding: 0.65rem; font-size: 0.95rem; }
+  button { padding: 0.65rem 1.25rem; font-size: 0.95rem; }
+}
