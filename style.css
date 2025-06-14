@@ -3,13 +3,13 @@
   --primary: #EAE4D5;
   --primary-light: #DDF6D2;
   --secondary: #C68EFD;
-  --bg-light: #f9fafb;
+  --bg-light: #1f1f1f;
   --bg-dark: #1f1f1f;
-  --surface-light: #ffffff;
+  --surface-light: #2a2a2a;
   --surface-dark: #2a2a2a;
-  --text-light: #1f2937;
+  --text-light: #e5e5e5;
   --text-dark: #e5e5e5;
-  --muted-light: #547792;
+  --muted-light: #9e9e9e;
   --muted-dark: #9e9e9e;
   --radius: 16px;
   --shadow-light: 0 12px 40px rgba(0, 0, 0, 0.05);
